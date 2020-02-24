@@ -1,6 +1,4 @@
-package com.example.app3;
-import android.graphics.Color;
-import android.widget.*;
+package com.example.myapplication;
 
 import java.lang.Math;
 
