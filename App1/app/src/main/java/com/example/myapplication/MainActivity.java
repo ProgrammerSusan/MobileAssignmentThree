@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -45,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
             int numYears = (int)values[3];
 
             retirement = new RetirementCalculator(current, annual, returnRate, numYears);
+
+            Intent secondActivity = new Intent(this, Activity2.class);
+            startActivity(secondActivity);
         }
     }
 }
