@@ -5,7 +5,7 @@
     android:gravity="center">
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="650dp"
+        android:layout_height="500dp"
         android:fadeScrollbars="false">
         <TableLayout
             android:orientation="vertical" android:layout_width="match_parent"
