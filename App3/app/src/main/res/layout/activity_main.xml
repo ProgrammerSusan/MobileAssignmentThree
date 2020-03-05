@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="50dp"
+    android:layout_marginLeft="50dp"
+    android:layout_marginRight="50dp"
+    android:layout_marginTop="100dp"
     tools:context=".MainActivity">
 
     <EditText
@@ -16,5 +18,32 @@
         android:layout_centerHorizontal="true"
         android:maxLength="200"
         android:background="#f2f2f2"/>
+
+    <Button
+        android:id="@+id/encrypt"
+        android:layout_below="@id/message"
+        android:layout_marginTop="50dp"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="ENCRYPT"/>
+
+    <Button
+        android:id="@+id/decrypt"
+        android:layout_below="@id/message"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="50dp"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="DECRYPT"/>
+
+    <Button
+        android:id="@+id/key"
+        android:layout_below="@id/message"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@id/decrypt"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="KEY"/>
 
 </RelativeLayout>
