@@ -25,7 +25,8 @@
         android:layout_marginTop="50dp"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:text="ENCRYPT"/>
+        android:text="ENCRYPT"
+        android:onClick="encrypt" />
 
     <Button
         android:id="@+id/decrypt"
@@ -34,7 +35,8 @@
         android:layout_marginTop="50dp"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:text="DECRYPT"/>
+        android:text="DECRYPT"
+        android:onClick="decrypt" />
 
     <Button
         android:id="@+id/key"
@@ -44,6 +46,7 @@
         android:layout_toRightOf="@id/decrypt"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:text="KEY"/>
+        android:text="KEY"
+        android:onClick="keyScreen" />
 
 </RelativeLayout>
