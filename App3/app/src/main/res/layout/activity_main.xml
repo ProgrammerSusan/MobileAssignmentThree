@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="50dp"
-    android:layout_marginRight="50dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
     android:layout_marginTop="100dp"
     tools:context=".MainActivity">
 
@@ -29,8 +29,8 @@
 
     <Button
         android:id="@+id/decrypt"
+        android:layout_toRightOf="@id/encrypt"
         android:layout_below="@id/message"
-        android:layout_centerInParent="true"
         android:layout_marginTop="50dp"
         android:layout_width="100dp"
         android:layout_height="50dp"
