@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         EditText message = (EditText)findViewById(R.id.message);
         String msg = message.getText().toString();
 
-        message.setText(model.encrypt(msg));
+        message.setText(model.decrypt(msg));
     }
 
     public void keyScreen(View v){
