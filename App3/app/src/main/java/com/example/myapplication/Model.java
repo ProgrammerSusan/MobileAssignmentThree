@@ -17,6 +17,7 @@ public class Model {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt("KEY", key);
+        editor.apply();
     }
 
     public String encrypt(String input)
@@ -45,6 +46,10 @@ public class Model {
         }
 
         return output;
+    }
+
+    public int getKey(){
+        return key;
     }
 
     private char encrypt(char letter)

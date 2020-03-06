@@ -13,10 +13,15 @@ public class Activity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity2);
+        EditText key = (EditText)findViewById(R.id.key);
+        key.setText(model.getKey()+"");
     }
 
     public void save(View v){
-        EditText bacl = (EditText)findViewById(R.id.back);
+        EditText key = (EditText)findViewById(R.id.key);
+        int keyValue = Integer.parseInt(key.getText().toString());
+        model.set(keyValue, this);
+
     }
 
     public void back(View v){
