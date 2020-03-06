@@ -1,11 +1,22 @@
 package com.example.myapplication;
 
+import android.content.*;
+import android.preference.PreferenceManager;
+
 public class Model {
     private int key;
 
-    public void set(int key)
+    public Model(Context context){
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        key = preferences.getInt("KEY", 0);
+    }
+
+    public void set(int key, Context context)
     {
         this.key = key;
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt("KEY", key);
     }
 
     public String encrypt(String input)
