@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.*;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void keyScreen(View v){
-
+        Intent secondActivity = new Intent(this, Activity2.class);
+        startActivity(secondActivity);
     }
 }
