@@ -2,11 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="#E0E4E3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="20dp"
-    android:layout_marginRight="20dp"
-    android:layout_marginTop="100dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="100dp"
     tools:context=".MainActivity">
 
     <EditText
@@ -25,8 +26,9 @@
         android:layout_below="@id/message"
         android:layout_toLeftOf="@id/encrypt"
         android:layout_marginTop="50dp"
-        android:layout_width="100dp"
+        android:layout_width="120dp"
         android:layout_height="50dp"
+        android:background="#B5AEC4"
         android:text="ENCRYPT"
         android:onClick="encrypt" />
 
@@ -36,8 +38,10 @@
         android:layout_below="@id/message"
         android:layout_centerInParent="true"
         android:layout_marginTop="50dp"
-        android:layout_width="100dp"
+        android:layout_marginLeft="5dp"
+        android:layout_width="120dp"
         android:layout_height="50dp"
+        android:background="#B5AEC4"
         android:text="DECRYPT"
         android:onClick="decrypt" />
 
@@ -47,8 +51,9 @@
         android:layout_toRightOf="@id/decrypt"
         android:layout_marginTop="50dp"
         android:layout_marginLeft="5dp"
-        android:layout_width="100dp"
+        android:layout_width="120dp"
         android:layout_height="50dp"
+        android:background="#B5AEC4"
         android:text="KEY"
         android:onClick="keyScreen" />
 
