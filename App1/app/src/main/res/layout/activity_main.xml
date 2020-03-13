@@ -6,138 +6,135 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="50dp"
-    android:layout_gravity="center"
     tools:context=".MainActivity">
 
-    <ScrollView
+    <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fadeScrollbars="false">
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TableRow
-                android:id="@+id/row1"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
-                <TextView
-                    android:id="@+id/currentPrincipal"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:text="Current Principal"
-                    android:padding="5dp"
-                    android:textSize="18dp"
-                    android:background="@color/textBackground"
-                    android:layout_marginLeft="25dp" />
-
-                <EditText
-                    android:id="@+id/principalInput"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/currentPrincipal"
-                    android:padding="5dp"
-                    android:background="@color/inputBackground"
-                    android:maxLength="10"
-                    android:hint="Current Principal" />
-            </TableRow>
-            <TableRow
-                android:id="@+id/row2"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
-                <TextView
-                    android:id="@+id/annualAdditions"
-                    android:layout_below="@id/currentPrincipal"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Annual Addition"
-                    android:padding="5dp"
-                    android:textSize="18dp"
-                    android:background="@color/textBackground"
-                    android:layout_marginLeft="25dp" />
-
-                <EditText
-                    android:id="@+id/annualInput"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@id/annualAdditions"
-                    android:layout_below="@id/principalInput"
-                    android:padding="5dp"
-                    android:background="@color/inputBackground"
-                    android:maxLength="10"
-                    android:hint="Annual Addition" />
-            </TableRow>
-            <TableRow
-                android:id="@+id/row3"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
-                <TextView
-                    android:id="@+id/returnRate"
-                    android:layout_below="@id/annualAdditions"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Annual Input"
-                    android:padding="5dp"
-                    android:textSize="18dp"
-                    android:background="@color/textBackground"
-                    android:layout_marginLeft="25dp" />
-
-                <EditText
-                    android:id="@+id/returnInput"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@id/returnRate"
-                    android:layout_below="@id/annualInput"
-                    android:padding="5dp"
-                    android:background="@color/inputBackground"
-                    android:maxLength="10"
-                    android:hint="Rate of Return" />
-            </TableRow>
-            <TableRow
-                android:id="@+id/row4"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
-                <TextView
-                    android:id="@+id/years"
-                    android:layout_below="@id/returnRate"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Number of Years"
-                    android:padding="5dp"
-                    android:textSize="18dp"
-                    android:background="@color/textBackground"
-                    android:layout_marginLeft="25dp" />
-
-                <EditText
-                    android:id="@+id/yearsInput"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@id/years"
-                    android:layout_below="@id/returnInput"
-                    android:padding="5dp"
-                    android:background="@color/inputBackground"
-                    android:maxLength="10"
-                    android:hint="Years" />
-            </TableRow>
-            <TableRow
-                android:id="@+id/row5"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
-
-            </TableRow>
-
-            <Button
-                android:layout_width="100dp"
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="25dp">
+        <TableRow
+            android:id="@+id/row1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+            <TextView
+                android:id="@+id/currentPrincipal"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_centerHorizontal="true"
-                android:text="Calculate"
-                android:onClick="calculate" />
-        </TableLayout>
-    </ScrollView>
+                android:text="Current Principal"
+                android:padding="5dp"
+                android:textSize="18dp"
+                android:background="@color/textBackground"
+                android:layout_marginLeft="25dp" />
+
+            <EditText
+                android:id="@+id/principalInput"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/currentPrincipal"
+                android:padding="5dp"
+                android:background="@color/inputBackground"
+                android:maxLength="10"
+                android:hint="Current Principal" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/row2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+            <TextView
+                android:id="@+id/annualAdditions"
+                android:layout_below="@id/currentPrincipal"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Annual Addition"
+                android:padding="5dp"
+                android:textSize="18dp"
+                android:background="@color/textBackground"
+                android:layout_marginLeft="25dp" />
+
+            <EditText
+                android:id="@+id/annualInput"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/annualAdditions"
+                android:layout_below="@id/principalInput"
+                android:padding="5dp"
+                android:background="@color/inputBackground"
+                android:maxLength="10"
+                android:hint="Annual Addition" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/row3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+            <TextView
+                android:id="@+id/returnRate"
+                android:layout_below="@id/annualAdditions"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Annual Input"
+                android:padding="5dp"
+                android:textSize="18dp"
+                android:background="@color/textBackground"
+                android:layout_marginLeft="25dp" />
+
+            <EditText
+                android:id="@+id/returnInput"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/returnRate"
+                android:layout_below="@id/annualInput"
+                android:padding="5dp"
+                android:background="@color/inputBackground"
+                android:maxLength="10"
+                android:hint="Rate of Return" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/row4"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+            <TextView
+                android:id="@+id/years"
+                android:layout_below="@id/returnRate"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Number of Years"
+                android:padding="5dp"
+                android:textSize="18dp"
+                android:background="@color/textBackground"
+                android:layout_marginLeft="25dp" />
+
+            <EditText
+                android:id="@+id/yearsInput"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/years"
+                android:layout_below="@id/returnInput"
+                android:padding="5dp"
+                android:background="@color/inputBackground"
+                android:maxLength="10"
+                android:hint="Years" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/row5"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+        </TableRow>
+
+        <Button
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_centerHorizontal="true"
+            android:text="Calculate"
+            android:onClick="calculate" />
+    </TableLayout>
 </RelativeLayout>
