@@ -12,9 +12,8 @@ public class addOns extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_ons);
     }
-    public void next(View view)
-    {
-        setContentView(R.layout.activity_total);
 
-    }
+    public void back(View view) { }
+
+    public void next(View view) { }
 }

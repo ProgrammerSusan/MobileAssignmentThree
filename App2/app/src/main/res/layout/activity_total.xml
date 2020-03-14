@@ -37,5 +37,6 @@
         android:padding="5dp"
         android:background="#B5AEC4"
         android:layout_marginLeft="50dp"
+        android:onClick="back"
         android:text="Back"/>
 </RelativeLayout>
