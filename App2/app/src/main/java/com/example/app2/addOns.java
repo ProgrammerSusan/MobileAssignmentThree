@@ -3,6 +3,7 @@ package com.example.app2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 
 public class addOns extends AppCompatActivity {
 
@@ -10,5 +11,10 @@ public class addOns extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_ons);
+    }
+    public void next(View view)
+    {
+        setContentView(R.layout.activity_total);
+
     }
 }
