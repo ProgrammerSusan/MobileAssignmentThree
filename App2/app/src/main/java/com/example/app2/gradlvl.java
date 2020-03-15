@@ -14,7 +14,6 @@ public class gradlvl extends AppCompatActivity {
         setContentView(R.layout.activity_gradlvl);
     }
 
-    public void back(View view) { }
-
-    public void next(View view) { }
+    public void onClickG(View view) {
+    }
 }

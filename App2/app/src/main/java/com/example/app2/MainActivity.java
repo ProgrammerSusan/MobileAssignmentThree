@@ -15,6 +15,7 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,71 +23,82 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-    public void next(View view)
+    public void onClick(View view)
     {
-        Log.d("main", "enter method");
+        Log.d("main", "enter next");
 
-        int input = view.getId();
-        Log.d("main", "input initialized to "+ input);
+        if (view.getId() == findViewById(R.id.Next).getId()) {
+            Controller.tracker.setLast(R.layout.activity_main);
+            Controller.tracker.setNext(R.layout.activity_credits);
+            setContentView(Controller.tracker.nextScreen);
+        }
+    }
+    public void onClickC(View view)
+    {
+        if (view.getId() == findViewById(R.id.Next).getId())
+        {
+            Log.d("cred", "enter next");
 
-        int next  = findViewById(R.id.Next).getId();
-        Log.d("main", "next initialized to "+ next);
-
-        int next1 = findViewById(R.id.Next1).getId();
-        int back1 = findViewById(R.id.Back1).getId();
-        int next2 = findViewById(R.id.Next2).getId();
-        int back2 = findViewById(R.id.Back2).getId();
-        int next3 = findViewById(R.id.Next3).getId();
-        int back3 = findViewById(R.id.Back3).getId();
-        int back4 = findViewById(R.id.Back4).getId();
-
-
-
-        if (input==next)
-        {
-            setContentView(R.layout.activity_credits);
-            Log.d("main", "next to cred");
-        }
-        else if (input==next1)
-        {
-            setContentView(R.layout.activity_gradlvl);
-            Log.d("main", "next to gradlvl");
-        }
-        else if (input==back1)
-        {
-            setContentView(R.layout.activity_main);
-            Log.d("main", "back to main");
-        }
-        else if (input==next2)
-        {
-            setContentView(R.layout.activity_add_ons);
-            Log.d("main", "next to addOns");
-        }
-        else if (input==back2)
-        {
-            setContentView(R.layout.activity_credits);
-            Log.d("main", "back to credits");
-        }
-        else if (input==next3)
-        {
-            setContentView(R.layout.activity_total);
-            Log.d("main", "next to total");
-        }
-        else if (input==back3)
-        {
-            setContentView(R.layout.activity_gradlvl);
-            Log.d("main", "back to gradlvl");
-        }
-        else if (input==back4)
-        {
-            setContentView(R.layout.activity_add_ons);
-            Log.d("main", "back to addons");
+            Controller.tracker.setLast(R.layout.activity_credits);
+            Controller.tracker.setNext(R.layout.activity_gradlvl);
+            setContentView(Controller.tracker.nextScreen);
         }
         else
-            Log.d("Main", "ErrorPageChoice");
+        {
+            Log.d("cred", "enter back");
 
+            Controller.tracker.setLast(R.layout.activity_main);
+            Controller.tracker.setNext(R.layout.activity_main);
+            setContentView(Controller.tracker.lastScreen);
+
+        }
     }
+    public void onClickG(View view)
+    {
+        if (view.getId() == findViewById(R.id.Next).getId())
+        {
+            Log.d("grad", "enter next");
 
-    public void back(View view) { setContentView(R.layout.activity_main); }
+            Controller.tracker.setLast(R.layout.activity_gradlvl);
+            Controller.tracker.setNext(R.layout.activity_add_ons);
+            setContentView(Controller.tracker.nextScreen);
+        }
+        else
+        {
+            Log.d("grad", "enter back");
+
+            Controller.tracker.setLast(R.layout.activity_credits);
+            Controller.tracker.setNext(R.layout.activity_gradlvl);
+            setContentView(Controller.tracker.lastScreen);
+
+        }
+    }
+    public void onClickA(View view)
+    {
+        if (view.getId() == findViewById(R.id.Next).getId())
+        {
+            Log.d("add", "enter next");
+
+            Controller.tracker.setLast(R.layout.activity_add_ons);
+            Controller.tracker.setNext(R.layout.activity_total);
+            setContentView(Controller.tracker.nextScreen);
+        }
+        else
+        {
+            Log.d("add", "enter back");
+
+            Controller.tracker.setLast(R.layout.activity_gradlvl);
+            Controller.tracker.setNext(R.layout.activity_add_ons);
+            setContentView(Controller.tracker.lastScreen);
+
+        }
+    }
+    public void onClickT(View view)
+    {
+        Log.d("tot", "enter back");
+
+        Controller.tracker.setLast(R.layout.activity_add_ons);
+        Controller.tracker.setNext(R.layout.activity_total);
+        setContentView(Controller.tracker.lastScreen);
+    }
 }

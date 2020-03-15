@@ -27,7 +27,7 @@
         android:padding="5dp"/>
 
     <Button
-        android:id="@+id/Back3"
+        android:id="@+id/Back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/addOns"
@@ -35,19 +35,19 @@
         android:padding="5dp"
         android:background="#B5AEC4"
         android:layout_marginLeft="50dp"
-        android:onClick="back"
+        android:onClick="onClickA"
         android:text="Back"/>
 
     <Button
-        android:id="@+id/Next3"
+        android:id="@+id/Next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/addOns"
-        android:layout_toRightOf="@id/Back3"
+        android:layout_toRightOf="@id/Back"
         android:textSize="20dp"
         android:padding="5dp"
         android:background="#B5AEC4"
         android:layout_marginLeft="150dp"
-        android:onClick="next"
+        android:onClick="onClickA"
         android:text="Next"/>
 </RelativeLayout>
