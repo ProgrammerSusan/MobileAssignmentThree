@@ -11,7 +11,7 @@
     android:rowCount="2"
     android:columnCount="2">
 
-    <TextView
+    <Button
         android:layout_width="200dp"
         android:layout_height="325dp"
         android:id="@+id/North"
@@ -22,9 +22,10 @@
         android:layout_margin="2dp"
         android:layout_gravity="center_horizontal"
         android:textSize="45dp"
-        android:padding="10dp"/>
+        android:padding="10dp"
+        android:onClick="click"/>
 
-    <TextView
+    <Button
         android:layout_width="200dp"
         android:layout_height="325dp"
         android:id="@+id/South"
@@ -35,9 +36,10 @@
         android:layout_margin="2dp"
         android:layout_gravity="center_horizontal"
         android:textSize="45dp"
-        android:padding="10dp"/>
+        android:padding="10dp"
+        android:onClick="click"/>
 
-    <TextView
+    <Button
         android:layout_width="200dp"
         android:layout_height="325dp"
         android:id="@+id/West"
@@ -48,9 +50,10 @@
         android:layout_margin="2dp"
         android:layout_gravity="center_horizontal"
         android:textSize="45dp"
-        android:padding="10dp"/>
+        android:padding="10dp"
+        android:onClick="click"/>
 
-    <TextView
+    <Button
         android:layout_width="200dp"
         android:layout_height="325dp"
         android:id="@+id/East"
@@ -61,6 +64,7 @@
         android:layout_margin="2dp"
         android:layout_gravity="center_horizontal"
         android:textSize="45dp"
-        android:padding="10dp"/>
+        android:padding="10dp"
+        android:onClick="click"/>
 
 </GridLayout>
