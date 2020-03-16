@@ -11,12 +11,11 @@
         android:id="@+id/text"
         android:layout_width="match_parent"
         android:layout_height="700dp"
-        android:padding="10dp"
+        android:padding="30dp"
         android:layout_centerHorizontal="true"
         android:background="@color/colorPrimaryDark"
         android:textSize="20dp"
-        android:text="Dir1 \ndir2 \ndir3 \ndir4 \ndir5"/>
-
+        android:text="Head southwest on 9th St toward Labadie St \nUse the right 2 lanes to take the Interstate 94 W ramp to Chicago \nTake exit 181B to merge onto W Michigan Ave \nUse the left 2 lanes to turn left onto S Hewitt Rd \nTurn right (Destination will be on your Right)"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
