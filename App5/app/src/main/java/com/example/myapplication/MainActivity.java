@@ -23,6 +23,12 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
     }
 
+    public void back(View v){
+        setContentView(R.layout.activity_main);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -43,9 +49,11 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         if (id == R.id.feet) {
+            setContentView(R.layout.contentft);
             return true;
         }
         if (id == R.id.incm) {
+            setContentView(R.layout.contentin);
             return true;
         }
 
