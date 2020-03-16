@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginTop="100dp"
+    android:layout_marginLeft="15dp">
+    <EditText
+        android:id="@+id/meter"
+        style="@style/box"
+        android:hint="Meters" />
 
-</LinearLayout>
+    <EditText
+        android:id="@+id/kilometers"
+        style="@style/box"
+        android:layout_toRightOf="@id/meter"
+        android:layout_marginLeft="30dp"
+        android:hint="Kilometers" />
+
+    <TextView
+        android:id="@+id/miOut"
+        style="@style/box"
+        android:layout_below="@id/meter"
+        android:layout_marginTop="50dp" />
+
+    <TextView
+        android:id="@+id/kmOut"
+        style="@style/box"
+        android:layout_below="@id/kilometers"
+        android:layout_toRightOf="@id/miOut"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="50dp" />
+
+</RelativeLayout>
