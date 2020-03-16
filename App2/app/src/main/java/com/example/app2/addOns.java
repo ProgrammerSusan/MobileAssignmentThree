@@ -14,6 +14,6 @@ public class addOns extends AppCompatActivity {
         setContentView(R.layout.activity_add_ons);
     }
 
-    public void onClickA(View view) {
-    }
+    //pointer navigation method
+    public void onClickA(View view) { }
 }

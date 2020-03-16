@@ -1,5 +1,7 @@
 package com.example.app2;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -12,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    //navigation methods
     public void onClick(View view)
     {
         Log.d("main", "enter next");
@@ -42,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
             Controller.tracker.setLast(R.layout.activity_credits);
             Controller.tracker.setNext(R.layout.activity_gradlvl);
             setContentView(Controller.tracker.nextScreen);
+
         }
         else
         {
@@ -70,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
             Controller.tracker.setLast(R.layout.activity_credits);
             Controller.tracker.setNext(R.layout.activity_gradlvl);
             setContentView(Controller.tracker.lastScreen);
+
 
         }
     }

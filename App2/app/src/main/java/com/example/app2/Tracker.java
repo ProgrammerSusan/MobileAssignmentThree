@@ -22,6 +22,16 @@ public class Tracker
         lastScreen=0;
     }
 
+    public void setCredits(int n)
+    {
+        credits = n;
+    }
+
+    public int getCredits()
+    {
+        return credits;
+    }
+
     public void setNext(int n)
     {
         nextScreen = n;

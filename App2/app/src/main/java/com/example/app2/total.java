@@ -15,6 +15,6 @@ public class total extends AppCompatActivity {
         setContentView(R.layout.activity_total);
     }
 
-    public void onClickT(View view) {
-    }
+    //pointer navigation method
+    public void onClickT(View view) { }
 }

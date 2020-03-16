@@ -14,6 +14,6 @@ public class gradlvl extends AppCompatActivity {
         setContentView(R.layout.activity_gradlvl);
     }
 
-    public void onClickG(View view) {
-    }
+    //pointer navigation method
+    public void onClickG(View view) { }
 }
