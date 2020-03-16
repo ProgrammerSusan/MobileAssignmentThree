@@ -2,24 +2,22 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="100dp"
-    android:layout_marginLeft="15dp">
+    android:layout_marginTop="100dp">
     <EditText
-        android:id="@+id/meter"
+        android:id="@+id/miles"
         style="@style/box"
-        android:hint="Meters" />
+        android:hint="Miles" />
 
     <EditText
         android:id="@+id/kilometers"
         style="@style/box"
-        android:layout_toRightOf="@id/meter"
-        android:layout_marginLeft="30dp"
+        android:layout_toRightOf="@id/miles"
         android:hint="Kilometers" />
 
     <TextView
         android:id="@+id/miOut"
         style="@style/box"
-        android:layout_below="@id/meter"
+        android:layout_below="@id/miles"
         android:layout_marginTop="50dp" />
 
     <TextView
@@ -27,7 +25,12 @@
         style="@style/box"
         android:layout_below="@id/kilometers"
         android:layout_toRightOf="@id/miOut"
-        android:layout_marginLeft="30dp"
         android:layout_marginTop="50dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="BACK" />
 
 </RelativeLayout>
