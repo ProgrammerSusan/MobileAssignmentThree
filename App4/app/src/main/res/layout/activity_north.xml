@@ -8,20 +8,22 @@
     <TextView
         android:id="@+id/text"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
-        android:padding="10dp"
+        android:layout_height="700dp"
+        android:padding="30dp"
         android:layout_centerHorizontal="true"
         android:background="@color/colorPrimaryDark"
         android:textSize="20dp"
-        android:text="Dir1/n dir2/n dir3/n dir4/n dir5"/>
+        android:text="Get on US-23 S in Hartland Township \nTake exit 39 for Geddes Rd \nKeep left at the fork to continue toward Geddes Rd \nTurn right onto N Dixboro Rd \nContinue onto E Huron River Dr\nTurn left onto Clark Rd \nTurn left into parking lot"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/text"
+        android:layout_marginTop="400dp"
+        android:layout_marginLeft="150dp"
         android:textSize="20dp"
         android:background="@color/colorAccent"
         android:text="Back"
-        android:onClick="click"/>
+        android:onClick="click"
+        android:layout_gravity="center_horizontal"/>
 
 </RelativeLayout>

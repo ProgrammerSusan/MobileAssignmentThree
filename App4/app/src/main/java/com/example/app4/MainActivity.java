@@ -1,16 +1,16 @@
 package com.example.app4;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    public Button n = (Button) findViewById(R.id.North);
-    public Button s = (Button) findViewById(R.id.South);
-    public Button e = (Button) findViewById(R.id.East);
-    public Button w = (Button) findViewById(R.id.West);
+    public Button n, s, e, w;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,25 +20,36 @@ public class MainActivity extends AppCompatActivity {
 
     public void click(View v)
     {
+        n = (Button) findViewById(R.id.North);
+        s = (Button) findViewById(R.id.South);
+        e = (Button) findViewById(R.id.East);
+        w = (Button) findViewById(R.id.West);
+        Log.d("main", "buttons initialized");
+
         if (v==n)
         {
-            //go to north page
+            Log.d("main", "enter n");
+            setContentView(R.layout.activity_north);
         }
         else if (v==s)
         {
-            //go to south page
+            Log.d("main", "enter s");
+            setContentView(R.layout.activity_south);
         }
         else if (v==e)
         {
-            //go to east page
+            Log.d("main", "enter e");
+            setContentView(R.layout.activity_east);
         }
         else if (v==w)
         {
-            //go to west page
+            Log.d("main", "enter w");
+            setContentView(R.layout.activity_west);
         }
         else
         {
-            //either error checking or if i can route the back button through here
+            Log.d("nav", "enter m");
+            setContentView(R.layout.activity_main);
         }
     }
 }
