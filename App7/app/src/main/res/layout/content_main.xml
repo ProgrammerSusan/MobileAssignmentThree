@@ -6,25 +6,30 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainActivity"
+    android:layout_marginTop="70dp"
+    android:layout_marginLeft="50dp"
     tools:showIn="@layout/activity_main">
     <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="match_parent">
         <TableLayout
+            android:id="@+id/passwords"
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
             <TableRow>
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:textAlignment="center"
-                    android:text="Final Grade"/>
+                    android:text="Website" />
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:textAlignment="center"
-                    android:text="Final Grade"/>
+                    android:layout_marginLeft="50dp"
+                    android:text="Password" />
             </TableRow>
         </TableLayout>
     </ScrollView>

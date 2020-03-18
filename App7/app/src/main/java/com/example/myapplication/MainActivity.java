@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.app.ActionBar;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -11,6 +12,9 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,15 +24,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        TableLayout passwords =(TableLayout)findViewById(R.id.passwords);
+//        for(int i = 1; i <= amount.length; i++){
+//            TableRow tr1 = new TableRow(this);
+//            tr1.setLayoutParams(new ActionBar.LayoutParams(ActionBar.LayoutParams.FILL_PARENT, ActionBar.LayoutParams.WRAP_CONTENT));
+//            TextView year = new TextView(this);
+//            year.setText(i+"  ");
+//            TextView payment = new TextView(this);
+//            payment.setText(amount[i-1]+"");
+//            year.setTextSize(10*dp);
+//            payment.setTextSize(10*dp);
+//            tr1.addView(year);
+//            tr1.addView(payment);
+//            growth.addView(tr1);
     }
 
     @Override
