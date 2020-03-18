@@ -17,6 +17,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import java.util.LinkedList;
+
 public class MainActivity extends AppCompatActivity {
     private DatabaseManager db;
     @Override
@@ -25,12 +27,33 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        TableLayout passwords =(TableLayout)findViewById(R.id.passwords);
         db = new DatabaseManager(this);
+        TableLayout passwords =(TableLayout)findViewById(R.id.passwords);
+        showPasswords(passwords);
     }
 
-    public void insert(View v){
+    public void showPasswords(TableLayout passwords){
+        int dp = (int)(getResources().getDisplayMetrics().density);
+        LinkedList<Manager> pass = db.all();
+        for(int i = 0; i < pass.size(); i++){
+            TableRow tr1 = new TableRow(this);
+            tr1.setLayoutParams(new ActionBar.LayoutParams(ActionBar.LayoutParams.FILL_PARENT, ActionBar.LayoutParams.WRAP_CONTENT));
+            TextView year = new TextView(this);
+            year.setText(pass.get(i).getWebsite());
+            TextView payment = new TextView(this);
+            payment.setText(pass.get(i).getPassword());
+            year.setTextSize(10*dp);
+            payment.setTextSize(10*dp);
+            tr1.addView(year);
+            tr1.addView(payment);
+            passwords.addView(tr1);
+        }
+    }
 
+    public void back(View v){
+        setContentView(R.layout.activity_main);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
     }
 
     @Override

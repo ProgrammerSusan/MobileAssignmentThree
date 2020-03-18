@@ -79,5 +79,6 @@
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
         android:layout_centerInParent="true"
-        android:text="BACK" />
+        android:text="BACK"
+        android:onClick="back"/>
 </RelativeLayout>
