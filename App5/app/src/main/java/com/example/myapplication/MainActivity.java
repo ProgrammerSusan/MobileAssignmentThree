@@ -45,24 +45,24 @@ public class MainActivity extends AppCompatActivity {
             setContentView(R.layout.contentmi);
             EditText miles = (EditText)findViewById(R.id.miles);
             EditText kilometers = (EditText)findViewById(R.id.kilometers);
-            miles.addTextChangedListener(new Converter());
-            kilometers.addTextChangedListener(new Converter());
+            miles.addTextChangedListener(new Converter(findViewById(R.id.miles)));
+            kilometers.addTextChangedListener(new Converter(findViewById(R.id.kilometers)));
             return true;
         }
         if (id == R.id.feet) {
             setContentView(R.layout.contentft);
             EditText feet = (EditText)findViewById(R.id.feet);
             EditText meters = (EditText)findViewById(R.id.meters);
-            feet.addTextChangedListener(new Converter());
-            meters.addTextChangedListener(new Converter());
+            feet.addTextChangedListener(new Converter(findViewById(R.id.feet)));
+            meters.addTextChangedListener(new Converter(findViewById(R.id.meters)));
             return true;
         }
         if (id == R.id.incm) {
             setContentView(R.layout.contentin);
             EditText inches = (EditText)findViewById(R.id.inches);
             EditText centimeters = (EditText)findViewById(R.id.centimeters);
-            inches.addTextChangedListener(new Converter());
-            centimeters.addTextChangedListener(new Converter());
+            inches.addTextChangedListener(new Converter(findViewById(R.id.inches)));
+            centimeters.addTextChangedListener(new Converter(findViewById(R.id.centimeters)));
             return true;
         }
 
@@ -70,6 +70,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private class Converter implements TextWatcher {
+        //build textlistener
+        //this is so we know caller
+        public View view;
+        public Converter(View v)
+        {
+            this.view=v;
+        }
+
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -82,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void afterTextChanged(Editable s) {
-            if(s.hashCode() == R.id.inches){
+            if(view.getId()== R.id.inches){
                 EditText inches = (EditText)findViewById(R.id.inches);
                 TextView output = (TextView)findViewById(R.id.inOut);
                 double in = Integer.parseInt(inches.getText().toString());

@@ -13,6 +13,7 @@ import org.w3c.dom.Text;
 
 public class credits extends AppCompatActivity
 {
+	public static Tracker tracker = MainActivity.tracker;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
