@@ -16,6 +16,7 @@ public class DatabaseManager extends SQLiteOpenHelper
     private static final String DATABASE_NAME = "PASSWORDS_DB";
     private static final int DATABASE_VERSION = 1;
     private static final String TABLE_NAME = "PASSWORDS_TABLE";
+
     public DatabaseManager(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -38,6 +39,8 @@ public class DatabaseManager extends SQLiteOpenHelper
         ContentValues row = new ContentValues();
         row.put("WEBSITE", m.getWebsite());
         row.put("PASSWORD", m.getPassword());
+        db.insert(TABLE_NAME, null, row);
+        db.close();
     }
 
     public void delete(String site){

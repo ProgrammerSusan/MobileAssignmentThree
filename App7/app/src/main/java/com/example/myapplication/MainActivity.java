@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.LinkedList;
 
@@ -54,6 +55,29 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        TableLayout passwords =(TableLayout)findViewById(R.id.passwords);
+        showPasswords(passwords);
+    }
+
+    public void add(View v){
+        TextView site = (TextView)findViewById(R.id.site);
+        TextView pass = (TextView)findViewById(R.id.newPass);
+
+        try{
+            String website = site.getText().toString();
+            if(website == ""){
+                Toast.makeText(this, "Invalid website", Toast.LENGTH_SHORT).show();
+            }
+            String password = pass.getText().toString();
+            if(password == ""){
+                Toast.makeText(this, "Invalid password", Toast.LENGTH_SHORT).show();
+            }
+            Manager m = new Manager(website, password);
+            db.insert(m);
+        }
+        catch (Exception e){
+            Toast.makeText(this, "Problem with input", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
