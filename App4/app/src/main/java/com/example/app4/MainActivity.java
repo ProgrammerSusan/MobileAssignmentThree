@@ -1,5 +1,6 @@
 package com.example.app4;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,28 +29,32 @@ public class MainActivity extends AppCompatActivity {
 
         if (v==n)
         {
+            Intent nactivity = new Intent(this, north.class);
             Log.d("main", "enter n");
-            setContentView(R.layout.activity_north);
+            startActivity(nactivity);
+            overridePendingTransition(R.anim.nincoming,R.anim.mnoutgoing);
         }
         else if (v==s)
         {
+            Intent sactivity = new Intent(this, south.class);
             Log.d("main", "enter s");
-            setContentView(R.layout.activity_south);
+            startActivity(sactivity);
+            overridePendingTransition(R.anim.sincoming,R.anim.msoutgoing);
         }
         else if (v==e)
         {
+            Intent eactivity = new Intent(this, east.class);
             Log.d("main", "enter e");
-            setContentView(R.layout.activity_east);
+            startActivity(eactivity);
+            overridePendingTransition(R.anim.eincoming, R.anim.meoutgoing);
         }
         else if (v==w)
         {
+            Intent wactivity = new Intent(this, west.class);
             Log.d("main", "enter w");
-            setContentView(R.layout.activity_west);
+            startActivity(wactivity);
+            overridePendingTransition(R.anim.wincoming, R.anim.mwoutgoing);
         }
-        else
-        {
-            Log.d("nav", "enter m");
-            setContentView(R.layout.activity_main);
-        }
+        else { }
     }
 }
