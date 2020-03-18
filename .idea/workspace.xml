@@ -225,7 +225,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="403" y="23" width="1037" height="830" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.32964823" />

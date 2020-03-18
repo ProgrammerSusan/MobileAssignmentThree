@@ -1,27 +1,33 @@
 package com.example.app6;
 
+import android.content.Context;
 import android.graphics.Point;
 import android.os.Build;
+import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
-
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.app6.Interface;
-import com.example.app6.Model;
-
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.lang.*;
+import static com.example.app6.Interface.resetid;
+import static com.example.app6.Interface.resumeid;
+import static com.example.app6.Interface.saveid;
 
 public class MainActivity extends AppCompatActivity
 {
     private Interface ainterface;
     private Model model;
+    private static final String fileName = "boardFile";
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+    @RequiresApi(api = VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -30,8 +36,8 @@ public class MainActivity extends AppCompatActivity
         model = new Model();
         Point screenSize = new Point();
         getWindowManager().getDefaultDisplay().getSize(screenSize);
-        int width = screenSize.x/9;
 
+        int width = screenSize.x/9;
         ainterface = new Interface(this, 9, width);
 
         //dispersing all 81 listeners
@@ -44,9 +50,39 @@ public class MainActivity extends AppCompatActivity
             }
         }
 
+        onClickListener handler = new onClickListener();
+
 
         setContentView(ainterface);
 
+    }
+
+    public class onClickListener implements OnClickListener
+    {
+        @Override
+        public void onClick(View v)
+        {
+            Log.d("Debugger","view: "+v.getId());
+            if (v.getId() == resetid)
+            {
+                Log.d("Debugger","reset");
+
+            }
+            else if (v.getId() == saveid)
+            {
+                Log.d("Debugger","save");
+                try
+                {
+                    FileOutputStream fout = openFileOutput(fileName, Context.MODE_PRIVATE);
+                } catch (FileNotFoundException e) { e.printStackTrace(); }
+
+            }
+            else if (v.getId() == resumeid)
+            {
+                Log.d("Debugger","resume");
+
+            }
+        }
     }
 
     public class TextChangeHandler implements TextWatcher
