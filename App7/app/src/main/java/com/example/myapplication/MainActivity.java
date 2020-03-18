@@ -9,6 +9,7 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.provider.ContactsContract;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,7 +18,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-
+    private DatabaseManager db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,18 +26,11 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         TableLayout passwords =(TableLayout)findViewById(R.id.passwords);
-//        for(int i = 1; i <= amount.length; i++){
-//            TableRow tr1 = new TableRow(this);
-//            tr1.setLayoutParams(new ActionBar.LayoutParams(ActionBar.LayoutParams.FILL_PARENT, ActionBar.LayoutParams.WRAP_CONTENT));
-//            TextView year = new TextView(this);
-//            year.setText(i+"  ");
-//            TextView payment = new TextView(this);
-//            payment.setText(amount[i-1]+"");
-//            year.setTextSize(10*dp);
-//            payment.setTextSize(10*dp);
-//            tr1.addView(year);
-//            tr1.addView(payment);
-//            growth.addView(tr1);
+        db = new DatabaseManager(this);
+    }
+
+    public void insert(View v){
+
     }
 
     @Override
@@ -54,10 +48,22 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.add) {
+            setContentView(R.layout.addcontent);
             return true;
         }
+        else if (id == R.id.delete) {
+            setContentView(R.layout.deletecontent);
+            return true;
+        }
+        else if(id == R.id.update){
+            setContentView(R.layout.updatecontent);
+            return true;
+        }
+        else{
+            return super.onOptionsItemSelected(item);
+        }
 
-        return super.onOptionsItemSelected(item);
+
     }
 }

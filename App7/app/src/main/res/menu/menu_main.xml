@@ -3,8 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.myapplication.MainActivity">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/add"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+        android:title="Add Password"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/delete"
+        android:orderInCategory="100"
+        android:title="Delete Password"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/update"
+        android:orderInCategory="100"
+        android:title="Update Password"
+        app:showAsAction="always" />
 </menu>
