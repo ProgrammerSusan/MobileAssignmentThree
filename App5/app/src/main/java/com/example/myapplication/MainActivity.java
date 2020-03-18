@@ -1,19 +1,16 @@
 package com.example.myapplication;
 
-import android.content.Intent;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.text.*;
+import android.view.*;
+import android.widget.*;
 
 public class MainActivity extends AppCompatActivity {
+    public EditText miles, kilometers, feet, meters, inches, centimeters;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,17 +43,53 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.milekm) {
             setContentView(R.layout.contentmi);
+            EditText miles = (EditText)findViewById(R.id.miles);
+            EditText kilometers = (EditText)findViewById(R.id.kilometers);
+            miles.addTextChangedListener(new Converter());
+            kilometers.addTextChangedListener(new Converter());
             return true;
         }
         if (id == R.id.feet) {
             setContentView(R.layout.contentft);
+            EditText feet = (EditText)findViewById(R.id.feet);
+            EditText meters = (EditText)findViewById(R.id.meters);
+            feet.addTextChangedListener(new Converter());
+            meters.addTextChangedListener(new Converter());
             return true;
         }
         if (id == R.id.incm) {
             setContentView(R.layout.contentin);
+            EditText inches = (EditText)findViewById(R.id.inches);
+            EditText centimeters = (EditText)findViewById(R.id.centimeters);
+            inches.addTextChangedListener(new Converter());
+            centimeters.addTextChangedListener(new Converter());
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
+    private class Converter implements TextWatcher {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            if(s.hashCode() == R.id.inches){
+                EditText inches = (EditText)findViewById(R.id.inches);
+                TextView output = (TextView)findViewById(R.id.inOut);
+                double in = Integer.parseInt(inches.getText().toString());
+                double cm = in * 2.34;
+                output.setText(cm + "");
+            }
+        }
+    }
 }
+
