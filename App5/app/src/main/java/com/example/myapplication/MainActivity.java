@@ -93,9 +93,80 @@ public class MainActivity extends AppCompatActivity {
             if(view.getId()== R.id.inches){
                 EditText inches = (EditText)findViewById(R.id.inches);
                 TextView output = (TextView)findViewById(R.id.inOut);
-                double in = Integer.parseInt(inches.getText().toString());
+                double in;
+                try {
+                    in = Integer.parseInt(inches.getText().toString());
+                }
+                catch(Exception e){
+                    in = 0;
+                }
                 double cm = in * 2.34;
                 output.setText(cm + "");
+            }
+            else if(view.getId() == R.id.centimeters){
+                EditText centimeters = (EditText)findViewById(R.id.centimeters);
+                TextView output = (TextView)findViewById(R.id.cmOut);
+                double cm;
+                try {
+                    cm = Integer.parseInt(centimeters.getText().toString());
+                }
+                catch(Exception e){
+                    cm = 0;
+                }
+                double in = cm / 2.34;
+                output.setText(in + "");
+            }
+            else if(view.getId() == R.id.miles){
+                EditText miles = (EditText)findViewById(R.id.miles);
+                TextView output = (TextView)findViewById(R.id.miOut);
+                double mi;
+                try {
+                    mi = Integer.parseInt(miles.getText().toString());
+                }
+                catch(Exception e){
+                    mi = 0;
+                }
+                double km = mi * 0.62137;
+                output.setText(km + "");
+            }
+            else if(view.getId() == R.id.kilometers){
+                EditText kilometers = (EditText)findViewById(R.id.kilometers);
+                TextView output = (TextView)findViewById(R.id.kmOut);
+                double km =  0;
+                try {
+                    km = Integer.parseInt(kilometers.getText().toString());
+                }
+                catch(Exception e){
+                    km = 0;
+                }
+                double mi = km / 0.62137;
+                output.setText(mi + "");
+            }
+            else if(view.getId() == R.id.feet){
+                EditText feet = (EditText)findViewById(R.id.feet);
+                TextView output = (TextView)findViewById(R.id.inOut);
+                double ft;
+                try {
+                    ft = Integer.parseInt(feet.getText().toString());
+                }
+                catch(Exception e){
+                    ft = 0;
+                }
+                double m = ft * 3.281;
+                output.setText(m + "");
+            }
+            else{
+                EditText meters = (EditText)findViewById(R.id.meters);
+                TextView output = (TextView)findViewById(R.id.inOut);
+                double m;
+                try {
+                    m = Integer.parseInt(meters.getText().toString());
+                }
+                catch(Exception e){
+                    m = 0;
+                }
+                double ft = m / 3.281;
+                output.setText(ft + "");
             }
         }
     }
