@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
             }
             else if(view.getId() == R.id.feet){
                 EditText feet = (EditText)findViewById(R.id.feet);
-                TextView output = (TextView)findViewById(R.id.inOut);
+                TextView output = (TextView)findViewById(R.id.ftOut);
                 double ft;
                 try {
                     ft = Integer.parseInt(feet.getText().toString());
@@ -157,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
             }
             else{
                 EditText meters = (EditText)findViewById(R.id.meters);
-                TextView output = (TextView)findViewById(R.id.inOut);
+                TextView output = (TextView)findViewById(R.id.mOut);
                 double m;
                 try {
                     m = Integer.parseInt(meters.getText().toString());
