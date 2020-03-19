@@ -1,18 +1,16 @@
 package com.example.app6;
 
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Build.VERSION_CODES;
 import android.widget.*;
 import android.util.*;
 import android.view.*;
 import android.content.*;
-import androidx.annotation.RequiresApi;
+import androidx.annotation.*;
 import com.example.app6.MainActivity.TextChangeHandler;
-
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -26,6 +24,7 @@ public class Interface extends GridLayout
     public static int[][] board, ogboard=new int[9][9];
     private onClickListener handler = new onClickListener();
     private static final String fileName = "File.txt";
+    File f = new File(fileName);
     private int w;
     private Context cont;
 
@@ -199,9 +198,10 @@ public class Interface extends GridLayout
                     fout.close();
                 } catch (IOException e)
                 {
+                    File f = new File(fileName);
                     e.printStackTrace();
-                    TextView disp = findViewById(dispId);
-                    disp.setText("Error: could not save");
+                    //TextView disp = findViewById(dispId);
+                    //disp.setText("Error: could not save");
                 }
 
             }
@@ -231,9 +231,10 @@ public class Interface extends GridLayout
 
                 } catch (Exception e)
                 {
+                    File f = new File(fileName);
                     e.printStackTrace();
-                    TextView disp = findViewById(dispId);
-                    disp.setText("Error: could not resume");
+                    //TextView disp = findViewById(dispId);
+                    //disp.setText("Error: could not resume");
                 }
             }
         }
