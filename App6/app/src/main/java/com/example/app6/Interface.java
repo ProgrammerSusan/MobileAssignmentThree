@@ -21,6 +21,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 
 public class Interface extends GridLayout
@@ -30,8 +31,8 @@ public class Interface extends GridLayout
     public static int dispId=0, resetid=0, saveid=0, resumeid=0;
     public static int[][] board, ogboard=new int[9][9];
     private onClickListener handler = new onClickListener();
-    private static final String fileName = "File.txt";
-    File f = new File(fileName);
+    private final String fileName = "File.txt";
+    private File f = new File(fileName);
     private int w;
     private Context cont;
 
@@ -228,16 +229,19 @@ public class Interface extends GridLayout
             }
             else if (v.getId() == resumeid)
             {
-                String line="",line2="";
                 Log.d("Debugger","resume");
                 try
                 {
-                    File in = new File("File.txt");
-                    Scanner file = new Scanner(in);
+                    String line="",line2="", values="";
+                    StringTokenizer tokenizer;
+                    FileInputStream file = cont.openFileInput(fileName);
+                    InputStreamReader inputStreamReader = new InputStreamReader(file);
+                    BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 
-                    line=line+file.nextLine();
-                    Log.d("Debugger","line: "+line);
-
+                    while((values = bufferedReader.readLine()) != null){
+                        tokenizer = new StringTokenizer(values);
+                        line += tokenizer.nextToken();
+                    }
                     String temp[] = line.split(" ");
 
                     for (int i = 0; i<size; i++)
@@ -248,18 +252,6 @@ public class Interface extends GridLayout
                         }
                     }
                     buildBoard(board);
-
-                    file.nextLine();
-                    line=line+file.nextLine();
-                    Log.d("Debugger","line2: "+line);
-                    temp = line.split(" ");
-                    for (int i = 0; i<size; i++)
-                    {
-                        for (int j=0; j<size; j++)
-                        {
-                            board[i][j] = Integer.parseInt(temp[i+j]);
-                        }
-                    }
                     file.close();
 
                     fillboard(board);
