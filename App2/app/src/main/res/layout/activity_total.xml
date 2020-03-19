@@ -19,7 +19,7 @@
         android:text="Here is your Estimated Total" />
 
     <TextView
-        android:id="@+id/total"
+        android:id="@+id/sum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -33,7 +33,7 @@
         android:id="@+id/Back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/total"
+        android:layout_below="@id/sum"
         android:textSize="20dp"
         android:padding="5dp"
         android:background="#B5AEC4"

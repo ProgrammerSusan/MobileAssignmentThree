@@ -17,20 +17,35 @@
         android:padding="5dp"
         android:text="Graduate or Undergraduate?" />
 
-    <EditText
-        android:id="@+id/credits"
+    <RadioGroup
+        android:id="@+id/gradLvl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/lvl"
-        android:layout_margin="20dp"
-        android:textSize="20dp"
-        android:padding="5dp"/>
+        android:layout_below="@id/lvl">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:textSize="20dp"
+            android:padding="5dp"
+            android:id="@+id/ug"
+            android:text="Undergraduate"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:textSize="20dp"
+            android:padding="5dp"
+            android:id="@+id/g"
+            android:text="Graduate"
+            android:onClick="grad"/>
+    </RadioGroup>
 
     <Button
         android:id="@+id/Back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/credits"
+        android:layout_below="@id/gradLvl"
         android:textSize="20dp"
         android:padding="5dp"
         android:background="#B5AEC4"
@@ -42,7 +57,7 @@
         android:id="@+id/Next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/credits"
+        android:layout_below="@id/gradLvl"
         android:layout_toRightOf="@id/Back"
         android:textSize="20dp"
         android:padding="5dp"

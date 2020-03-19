@@ -2,6 +2,7 @@ package com.example.app2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +15,27 @@ public class gradlvl extends AppCompatActivity {
         setContentView(R.layout.activity_gradlvl);
     }
 
-    //pointer navigation method
-    public void onClickG(View view) { }
+
+    //navigation method
+    public void onClickG(View view)
+    {
+        if (view.getId() == findViewById(R.id.Next).getId())
+        {
+            Log.d("grad", "enter next");
+            Intent page = new Intent(this, addOns.class);
+            startActivity(page);
+        }
+        else
+        {
+            finish();
+        }
+    }
+
+    public void grad(View view)
+    {
+        if(view.isSelected())
+            Controller.tracker.grad = true;
+        else
+            Controller.tracker.grad = false;
+    }
 }

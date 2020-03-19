@@ -2,6 +2,7 @@ package com.example.app2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -9,7 +10,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
-import org.w3c.dom.Text;
 
 public class credits extends AppCompatActivity
 {
@@ -20,7 +20,7 @@ public class credits extends AppCompatActivity
         super.onCreate(savedInstanceState);
         textChangedHandler handler = new textChangedHandler();
         EditText cred = (EditText) findViewById(R.id.credits);
-        cred.addTextChangedListener(handler);
+        //cred.addTextChangedListener(handler);
         setContentView(R.layout.activity_credits);
     }
 
@@ -42,8 +42,22 @@ public class credits extends AppCompatActivity
         }
     }
 
-
-    //pointer navigation method
-    public void onClickC(View view) { }
+    //navigation method
+    public void onClickC(View view)
+    {
+        if (view.getId() == findViewById(R.id.Next).getId())
+        {
+            EditText input = findViewById(R.id.credits);
+            Controller.tracker.setCredits(Integer.parseInt(input.getText().toString()));
+            Log.d("cred", Controller.tracker.getCredits()+"");
+            Intent page = new Intent(this, gradlvl.class);
+            startActivity(page);
+            Log.d("cred", "enter next");
+        }
+        else
+        {
+            finish();
+        }
+    }
 
 }

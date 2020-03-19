@@ -17,20 +17,33 @@
         android:padding="5dp"
         android:text="What else should be included?" />
 
-    <EditText
-        android:id="@+id/addOns"
+    <CheckBox
+        android:id="@+id/dorm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/Ao"
         android:layout_margin="20dp"
         android:textSize="20dp"
-        android:padding="5dp"/>
+        android:padding="5dp"
+        android:text="Dormatory Living ($1,000)"
+        android:onClick="dorm"/>
+
+    <CheckBox
+        android:id="@+id/dining"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dorm"
+        android:layout_margin="20dp"
+        android:textSize="20dp"
+        android:padding="5dp"
+        android:text="Dining Plan ($500)"
+        android:onClick="dining"/>
 
     <Button
         android:id="@+id/Back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/addOns"
+        android:layout_below="@id/dining"
         android:textSize="20dp"
         android:padding="5dp"
         android:background="#B5AEC4"
@@ -42,7 +55,7 @@
         android:id="@+id/Next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/addOns"
+        android:layout_below="@id/dining"
         android:layout_toRightOf="@id/Back"
         android:textSize="20dp"
         android:padding="5dp"

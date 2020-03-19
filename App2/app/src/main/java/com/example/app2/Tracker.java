@@ -8,8 +8,6 @@ public class Tracker
     boolean dorm;
     boolean dining;
     int totalCost;
-    int nextScreen;
-    int lastScreen;
 
     public Tracker()
     {
@@ -18,26 +16,36 @@ public class Tracker
         dorm=false;
         dining=false;
         totalCost=0;
-        nextScreen=0;
-        lastScreen=0;
     }
 
-    public void setCredits(int n)
-    {
-        credits = n;
-    }
-
+    public void setCredits(int n) { credits = n; }
     public int getCredits()
     {
         return credits;
     }
 
-    public void setNext(int n)
+    public boolean isGrad() {return grad;}
+
+    public boolean isDorm() {return dorm;}
+
+    public boolean isDining() {return dining;}
+
+    public int getTotalCost()
     {
-        nextScreen = n;
-    }
-    public void setLast(int n)
-    {
-        lastScreen = n;
+        int runningtotal=0;
+
+        if(grad)
+            runningtotal=400*credits;
+        else
+            runningtotal=300*credits;
+
+        if(dorm)
+            runningtotal=runningtotal+1000;
+
+        if(dining)
+            runningtotal=runningtotal+500;
+
+        totalCost=runningtotal;
+        return runningtotal;
     }
 }
