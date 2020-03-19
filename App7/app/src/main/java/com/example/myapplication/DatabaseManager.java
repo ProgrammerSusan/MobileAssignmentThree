@@ -45,7 +45,7 @@ public class DatabaseManager extends SQLiteOpenHelper
 
     public void delete(String site){
         SQLiteDatabase db = getWritableDatabase();
-        db.delete(TABLE_NAME, "NAME = ?", new String[]{site});
+        db.delete(TABLE_NAME, "WEBSITE = ?", new String[]{site});
         db.close();
     }
 

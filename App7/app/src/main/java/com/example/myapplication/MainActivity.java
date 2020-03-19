@@ -132,7 +132,16 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onClick(View v) {
+            // get selected radio button from radioGroup
+            RadioGroup r = (RadioGroup)findViewById(R.id.deleteOptions);
+            int selectedId = r.getCheckedRadioButtonId();
 
+            // find the radiobutton by returned id
+            RadioButton radioButton = (RadioButton) findViewById(selectedId);
+            String website = radioButton.getText().toString();
+            db.delete(website);
+            r.removeAllViews();
+            deleteOptions(r);
         }
     }
 }
