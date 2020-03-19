@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:text="Website Name"
                 android:padding="5dp"
-                android:textSize="18dp"
+                android:textSize="20dp"
                 android:background="#FDF"
                 android:layout_marginLeft="25dp" />
 
@@ -32,6 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/website"
                 android:padding="5dp"
+                android:textSize="20dp"
                 android:background="#DDD"
                 android:maxLength="10"
                 android:hint="Website" />
@@ -48,7 +49,7 @@
                 android:layout_marginTop="10dp"
                 android:text="Password"
                 android:padding="5dp"
-                android:textSize="18dp"
+                android:textSize="20dp"
                 android:background="#FDF"
                 android:layout_marginLeft="25dp" />
 
@@ -60,6 +61,7 @@
                 android:layout_toRightOf="@id/pass"
                 android:layout_below="@id/site"
                 android:padding="5dp"
+                android:textSize="20dp"
                 android:background="#DDD"
                 android:maxLength="10"
                 android:hint="Password" />
@@ -71,6 +73,7 @@
         android:layout_above="@id/back"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
+        android:textSize="20dp"
         android:text="add"
         android:onClick="add"/>
     <Button
@@ -80,6 +83,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
         android:layout_centerInParent="true"
+        android:textSize="20dp"
         android:text="BACK"
         android:onClick="back"/>
 </RelativeLayout>
