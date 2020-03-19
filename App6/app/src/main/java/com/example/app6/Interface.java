@@ -20,6 +20,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.Reader;
+import java.util.Scanner;
 
 
 public class Interface extends GridLayout
@@ -165,6 +166,16 @@ public class Interface extends GridLayout
         }
     }
 
+    public void fillboard(int[][] board)
+    {
+        for (int i =0; i<size; i++) {
+            for(int j = 0; j<size;j++) {
+                box[i][j].setBackgroundColor(Color.parseColor("#E0E4E3"));
+                box[i][j].setText(board[i][j]+"");
+            }
+        }
+    }
+
     public class onClickListener implements OnClickListener
     {
         @Override
@@ -195,13 +206,15 @@ public class Interface extends GridLayout
 
                             line2= line2+ogboard[i][j]+"";
                         }
-                        line=line+"\n";
-                        line2=line2+"\n";
+                        //line=line+"\n";
+                        //line2=line2+"\n";
                     }
-                    line = line+"*";
-                    line2=line2+"*";
-                    fout.write(line);
+                    //line = line+"*";
+                    //line2=line2+"*";
+
                     fout.write(line2);
+                    fout.write("\n");
+                    fout.write(line);
                     fout.flush();
                     fout.close();
                 } catch (IOException e)
@@ -216,15 +229,14 @@ public class Interface extends GridLayout
             else if (v.getId() == resumeid)
             {
                 String line="",line2="";
-                int input=0;
                 Log.d("Debugger","resume");
                 try
                 {
-                    BufferedReader reader = new BufferedReader(new FileReader(fileName));
+                    File in = new File("File.txt");
+                    Scanner file = new Scanner(in);
 
-                    while ((input=reader.read())!='*') {
-                        line=line+input;
-                    }
+                    line=line+file.nextLine();
+                    Log.d("Debugger","line: "+line);
 
                     String temp[] = line.split(" ");
 
@@ -235,7 +247,22 @@ public class Interface extends GridLayout
                             board[i][j] = Integer.parseInt(temp[i+j]);
                         }
                     }
-                    reader.close();
+                    buildBoard(board);
+
+                    file.nextLine();
+                    line=line+file.nextLine();
+                    Log.d("Debugger","line2: "+line);
+                    temp = line.split(" ");
+                    for (int i = 0; i<size; i++)
+                    {
+                        for (int j=0; j<size; j++)
+                        {
+                            board[i][j] = Integer.parseInt(temp[i+j]);
+                        }
+                    }
+                    file.close();
+
+                    fillboard(board);
 
                 } catch (Exception e)
                 {
