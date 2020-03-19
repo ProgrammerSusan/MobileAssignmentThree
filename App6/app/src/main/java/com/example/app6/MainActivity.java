@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity
 {
     private Interface ainterface;
     private Model model;
-    private static final String fileName = "boardFile";
 
     @RequiresApi(api = VERSION_CODES.JELLY_BEAN_MR1)
     @Override
@@ -50,39 +49,8 @@ public class MainActivity extends AppCompatActivity
             }
         }
 
-        onClickListener handler = new onClickListener();
-
-
         setContentView(ainterface);
 
-    }
-
-    public class onClickListener implements OnClickListener
-    {
-        @Override
-        public void onClick(View v)
-        {
-            Log.d("Debugger","view: "+v.getId());
-            if (v.getId() == resetid)
-            {
-                Log.d("Debugger","reset");
-
-            }
-            else if (v.getId() == saveid)
-            {
-                Log.d("Debugger","save");
-                try
-                {
-                    FileOutputStream fout = openFileOutput(fileName, Context.MODE_PRIVATE);
-                } catch (FileNotFoundException e) { e.printStackTrace(); }
-
-            }
-            else if (v.getId() == resumeid)
-            {
-                Log.d("Debugger","resume");
-
-            }
-        }
     }
 
     public class TextChangeHandler implements TextWatcher

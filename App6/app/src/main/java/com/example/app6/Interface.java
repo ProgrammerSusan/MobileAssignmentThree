@@ -7,12 +7,11 @@ import android.widget.*;
 import android.util.*;
 import android.view.*;
 import android.content.*;
-import android.widget.GridLayout.LayoutParams;
-
 import androidx.annotation.RequiresApi;
-
 import com.example.app6.MainActivity.TextChangeHandler;
-import com.example.app6.MainActivity.onClickListener;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 
 public class Interface extends GridLayout
@@ -20,23 +19,31 @@ public class Interface extends GridLayout
     private int size;
     private static EditText[][] box;
     public static int dispId=0, resetid=0, saveid=0, resumeid=0;
-    public static int[][] board;
-    public onClickListener handler = new onClickListener();
-
+    public static int[][] board, ogboard;
+    private onClickListener handler = new onClickListener();
+    private static final String fileName = "boardFile";
 
     @RequiresApi(api = VERSION_CODES.JELLY_BEAN_MR1)
-    public Interface(Context context, int size, int width)
-    {
+    public Interface(Context context, int size, int width) {
         super(context);
 
-        final int dp = (int)(getResources().getDisplayMetrics().density);
+        final int dp = (int) (getResources().getDisplayMetrics().density);
 
         this.size = 9;
-        setRowCount(size+3);
+        setRowCount(size + 3);
         setColumnCount(size);
 
         //getting board info from blackbox
         board = Model.makeboard();
+
+        for (int i = 0; i < size; i++)
+        {
+            for (int j = 0; j < size; j++)
+            {
+                ogboard[i][j] = board[i][j];
+            }
+        }
+
 
         //setup and population of board
         box = new EditText[size][size];
@@ -139,6 +146,52 @@ public class Interface extends GridLayout
         resume.setOnClickListener(handler);
         addView(resume);
 
+    }
+
+
+    public class onClickListener implements OnClickListener
+    {
+        @Override
+        public void onClick(View v)
+        {
+            Log.d("Debugger","view: "+v.getId());
+            if (v.getId() == resetid)
+            {
+                Log.d("Debugger","reset");
+
+            }
+            else if (v.getId() == saveid)
+            {
+                String line="";
+                String line2="";
+                Log.d("Debugger","save");
+                try
+                {
+                    FileOutputStream fout = openFileOutput(fileName, Context.MODE_PRIVATE);
+                    for(int i = 0; i<size; i++)
+                    {
+                        for(int j =0; j<size; j++)
+                        {
+                            line = line+board[i][j]+" ";
+
+                            line2= line2+ogboard[i][j]+"";
+                        }
+                        line=line+"\n";
+                        line2=line2+"\n";
+                    }
+                    fout.write(line.getBytes());
+                    fout.write(line2.getBytes());
+
+                    fout.close();
+                } catch (IOException e) { e.printStackTrace(); }
+
+            }
+            else if (v.getId() == resumeid)
+            {
+                Log.d("Debugger","resume");
+
+            }
+        }
     }
 
     //method called from controller to get the handlers attached
