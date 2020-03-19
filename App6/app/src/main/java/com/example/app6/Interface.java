@@ -232,7 +232,7 @@ public class Interface extends GridLayout
                 Log.d("Debugger","resume");
                 try
                 {
-                    String line="",line2="", values="";
+                    String line="", values="";
                     StringTokenizer tokenizer;
                     FileInputStream file = cont.openFileInput(fileName);
                     InputStreamReader inputStreamReader = new InputStreamReader(file);
@@ -242,7 +242,10 @@ public class Interface extends GridLayout
                         tokenizer = new StringTokenizer(values);
                         line += tokenizer.nextToken();
                     }
-                    String temp[] = line.split(" ");
+                    String[] temp = new String[line.length()];
+                    for(int i = 0; i < temp.length; i++){
+                        temp[i] = line.charAt(i) + "";
+                    }
 
                     for (int i = 0; i<size; i++)
                     {
