@@ -13,6 +13,8 @@ import android.provider.ContactsContract;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -51,6 +53,19 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void deleteOptions(RadioGroup radioGroup){
+        int dp = (int)(getResources().getDisplayMetrics().density);
+        LinkedList<Manager> pass = db.all();
+        Clicker click = new Clicker();
+        for(int i = 0; i < pass.size(); i++){
+            RadioButton rdbtn = new RadioButton(this);
+            rdbtn.setId(View.generateViewId());
+            rdbtn.setText(pass.get(i).getWebsite());
+            rdbtn.setOnClickListener(click);
+            radioGroup.addView(rdbtn);
+        }
+    }
+
     public void back(View v){
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -65,11 +80,11 @@ public class MainActivity extends AppCompatActivity {
 
         try{
             String website = site.getText().toString();
-            if(website == ""){
+            if(website.equals("")){
                 Toast.makeText(this, "Invalid website", Toast.LENGTH_SHORT).show();
             }
             String password = pass.getText().toString();
-            if(password == ""){
+            if(password.equals("")){
                 Toast.makeText(this, "Invalid password", Toast.LENGTH_SHORT).show();
             }
             Manager m = new Manager(website, password);
@@ -101,6 +116,8 @@ public class MainActivity extends AppCompatActivity {
         }
         else if (id == R.id.delete) {
             setContentView(R.layout.deletecontent);
+            RadioGroup r = (RadioGroup)findViewById(R.id.deleteOptions);
+            deleteOptions(r);
             return true;
         }
         else if(id == R.id.update){
@@ -110,7 +127,13 @@ public class MainActivity extends AppCompatActivity {
         else{
             return super.onOptionsItemSelected(item);
         }
+    }
+    public class Clicker implements View.OnClickListener{
 
+        @Override
+        public void onClick(View v) {
 
+        }
     }
 }
+
