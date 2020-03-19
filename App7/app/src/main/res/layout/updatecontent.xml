@@ -5,7 +5,7 @@
     <ScrollView
         android:id="@+id/scroll"
         android:layout_width="match_parent"
-        android:layout_height="470dp">
+        android:layout_height="450dp">
         <LinearLayout
             android:id="@+id/layout"
             android:layout_width="match_parent"
@@ -17,12 +17,22 @@
 
     </ScrollView>
     <Button
+        android:id="@+id/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="20dp"
+        android:layout_below="@id/scroll"
+        android:layout_centerHorizontal="true"
+        android:text="SUBMIT"
+        android:onClick="submitUpdate"/>
+    <Button
         android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         android:textSize="20dp"
-        android:layout_below="@id/scroll"
+        android:layout_below="@id/submit"
         android:layout_centerHorizontal="true"
         android:text="BACK"
         android:onClick="back"/>

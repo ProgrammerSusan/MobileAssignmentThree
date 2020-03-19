@@ -27,6 +27,7 @@ import java.util.LinkedList;
 
 public class MainActivity extends AppCompatActivity {
     private DatabaseManager db;
+    public static Tracker t = new Tracker();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,21 +73,47 @@ public class MainActivity extends AppCompatActivity {
     public void updateFields(LinearLayout l){
         int dp = (int)(getResources().getDisplayMetrics().density);
         LinkedList<Manager> pass = db.all();
+        if(t.getIds() != null){
+            t.clearTracker();
+        }
         for(int i = 0; i < pass.size(); i++){
             TextView place = new TextView(this);
             place.setText(pass.get(i).getWebsite());
+            place.setId(TextView.generateViewId());
+            int site = place.getId();
             place.setWidth(100 * dp);
             place.setHeight(50 * dp);
             place.setPadding(2,2,2,2);
             place.setBackgroundColor(Color.parseColor("#FFDDFF"));
+
             EditText update = new EditText(this);
+            update.setId(TextView.generateViewId());
+            int newPass = update.getId();
             update.setWidth(100 * dp);
             update.setHeight(50 * dp);
             update.setBackgroundColor(Color.parseColor("#DDDDDD"));
             place.setTextSize(10 * dp);
             update.setTextSize(10 * dp);
+
+            t.addIds(site, newPass);
+
             l.addView(place);
             l.addView(update);
+        }
+    }
+
+    public void submitUpdate(View v){
+        LinkedList<Integer> texts = t.getIds();
+        EditText e;
+        String change;
+        for(int i = 1; i < texts.size(); i += 2){
+            e = (EditText)findViewById(texts.get(i));
+            change = e.getText().toString();
+            if(!change.equals("")){
+                TextView t = (TextView)findViewById(texts.get(i-1));
+                String website = t.getText().toString();
+                db.update(website, change);
+            }
         }
     }
 

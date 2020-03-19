@@ -2,6 +2,8 @@ package com.example.myapplication;
 
 import androidx.annotation.NonNull;
 
+import java.util.LinkedList;
+
 public class Manager {
     private String website;
     private String password;
