@@ -7,7 +7,7 @@ import android.util.Log;
 import android.view.View;
 
 public class addOns extends AppCompatActivity {
-
+    private Tracker tracker = MainActivity.tracker;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

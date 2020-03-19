@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         Log.d("main", "enter next");
 
         if (view.getId() == findViewById(R.id.Next).getId()) {
+            Intent page = new Intent(this, credits.class);
+            startActivity(page);
             Controller.tracker.setLast(R.layout.activity_main);
             Controller.tracker.setNext(R.layout.activity_credits);
             setContentView(Controller.tracker.nextScreen);
@@ -41,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
     {
         if (view.getId() == findViewById(R.id.Next).getId())
         {
+            Intent page = new Intent(this, credits.class);
+            startActivity(page);
             Log.d("cred", "enter next");
 
             Controller.tracker.setLast(R.layout.activity_credits);
@@ -51,7 +55,8 @@ public class MainActivity extends AppCompatActivity {
         else
         {
             Log.d("cred", "enter back");
-
+            Intent page = new Intent(this, MainActivity.class);
+            startActivity(page);
             Controller.tracker.setLast(R.layout.activity_main);
             Controller.tracker.setNext(R.layout.activity_main);
             setContentView(Controller.tracker.lastScreen);
@@ -63,7 +68,8 @@ public class MainActivity extends AppCompatActivity {
         if (view.getId() == findViewById(R.id.Next).getId())
         {
             Log.d("grad", "enter next");
-
+            Intent page = new Intent(this, addOns.class);
+            startActivity(page);
             Controller.tracker.setLast(R.layout.activity_gradlvl);
             Controller.tracker.setNext(R.layout.activity_add_ons);
             setContentView(Controller.tracker.nextScreen);
@@ -71,7 +77,8 @@ public class MainActivity extends AppCompatActivity {
         else
         {
             Log.d("grad", "enter back");
-
+            Intent page = new Intent(this, credits.class);
+            startActivity(page);
             Controller.tracker.setLast(R.layout.activity_credits);
             Controller.tracker.setNext(R.layout.activity_gradlvl);
             setContentView(Controller.tracker.lastScreen);
@@ -84,7 +91,8 @@ public class MainActivity extends AppCompatActivity {
         if (view.getId() == findViewById(R.id.Next).getId())
         {
             Log.d("add", "enter next");
-
+            Intent page = new Intent(this, total.class);
+            startActivity(page);
             Controller.tracker.setLast(R.layout.activity_add_ons);
             Controller.tracker.setNext(R.layout.activity_total);
             setContentView(Controller.tracker.nextScreen);
@@ -92,7 +100,8 @@ public class MainActivity extends AppCompatActivity {
         else
         {
             Log.d("add", "enter back");
-
+            Intent page = new Intent(this, gradlvl.class);
+            startActivity(page);
             Controller.tracker.setLast(R.layout.activity_gradlvl);
             Controller.tracker.setNext(R.layout.activity_add_ons);
             setContentView(Controller.tracker.lastScreen);
@@ -102,7 +111,8 @@ public class MainActivity extends AppCompatActivity {
     public void onClickT(View view)
     {
         Log.d("tot", "enter back");
-
+        Intent page = new Intent(this, addOns.class);
+        startActivity(page);
         Controller.tracker.setLast(R.layout.activity_add_ons);
         Controller.tracker.setNext(R.layout.activity_total);
         setContentView(Controller.tracker.lastScreen);
