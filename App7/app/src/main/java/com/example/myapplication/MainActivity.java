@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.app.ActionBar;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -13,6 +14,8 @@ import android.provider.ContactsContract;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TableLayout;
@@ -63,6 +66,27 @@ public class MainActivity extends AppCompatActivity {
             rdbtn.setText(pass.get(i).getWebsite());
             rdbtn.setOnClickListener(click);
             radioGroup.addView(rdbtn);
+        }
+    }
+
+    public void updateFields(LinearLayout l){
+        int dp = (int)(getResources().getDisplayMetrics().density);
+        LinkedList<Manager> pass = db.all();
+        for(int i = 0; i < pass.size(); i++){
+            TextView place = new TextView(this);
+            place.setText(pass.get(i).getWebsite());
+            place.setWidth(100 * dp);
+            place.setHeight(50 * dp);
+            place.setPadding(2,2,2,2);
+            place.setBackgroundColor(Color.parseColor("#FFDDFF"));
+            EditText update = new EditText(this);
+            update.setWidth(100 * dp);
+            update.setHeight(50 * dp);
+            update.setBackgroundColor(Color.parseColor("#DDDDDD"));
+            place.setTextSize(10 * dp);
+            update.setTextSize(10 * dp);
+            l.addView(place);
+            l.addView(update);
         }
     }
 
@@ -122,6 +146,8 @@ public class MainActivity extends AppCompatActivity {
         }
         else if(id == R.id.update){
             setContentView(R.layout.updatecontent);
+            LinearLayout l = (LinearLayout)findViewById(R.id.layout);
+            updateFields(l);
             return true;
         }
         else{
