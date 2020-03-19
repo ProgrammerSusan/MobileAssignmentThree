@@ -9,19 +9,11 @@ import android.content.*;
 import androidx.annotation.*;
 import com.example.app6.MainActivity.TextChangeHandler;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.io.Reader;
-import java.util.Scanner;
-import java.util.StringTokenizer;
 
 
 public class Interface extends GridLayout
@@ -58,7 +50,6 @@ public class Interface extends GridLayout
         }
         cont = context;
         buildBoard(board);
-
         TextView display = new TextView(context);
         display.setId(TextView.generateViewId());
         dispId = display.getId();
@@ -141,7 +132,8 @@ public class Interface extends GridLayout
             for(int j = 0; j<size; j++)
             {
                 box[i][j] = new EditText(cont);
-                if(board[i][j]==0) {
+                if(board[i][j]==0)
+                {
                     box[i][j].setBackgroundColor(Color.parseColor("#E0E4E3"));
                 }
                 else
@@ -171,7 +163,10 @@ public class Interface extends GridLayout
     {
         for (int i =0; i<size; i++) {
             for(int j = 0; j<size;j++) {
-                box[i][j].setBackgroundColor(Color.parseColor("#E0E4E3"));
+                if (board[i][j]==0)
+                {
+                    continue;
+                }
                 box[i][j].setText(board[i][j]+"");
             }
         }
@@ -187,6 +182,13 @@ public class Interface extends GridLayout
             {
                 Log.d("Debugger","reset");
                 board=Model.makeboard();
+                for (int i = 0; i<size; i++)
+                {
+                    for (int j = 0; j<size; j++)
+                    {
+                        ogboard[i][j] = board[i][j];
+                    }
+                }
                 buildBoard(board);
 
             }
@@ -197,6 +199,7 @@ public class Interface extends GridLayout
                 Log.d("Debugger","save");
                 try
                 {
+                    File f = new File(fileName);
                     OutputStreamWriter fout = new OutputStreamWriter(cont.openFileOutput("File.txt", Context.MODE_PRIVATE));
                     for(int i = 0; i<size; i++)
                     {
@@ -204,12 +207,13 @@ public class Interface extends GridLayout
                         {
                             //if(board[i][j]!=null)
                             line = line+board[i][j]+" ";
-
-                            line2= line2+ogboard[i][j]+"";
+                            line2= line2+ogboard[i][j]+" ";
                         }
                         //line=line+"\n";
                         //line2=line2+"\n";
                     }
+                    Log.d("Debugger","line1: "+line);
+                    Log.d("Debugger","line2: "+line2);
                     //line = line+"*";
                     //line2=line2+"*";
 
@@ -232,31 +236,45 @@ public class Interface extends GridLayout
                 Log.d("Debugger","resume");
                 try
                 {
-                    String line="", values="";
-                    StringTokenizer tokenizer;
+                    String line="";
                     FileInputStream file = cont.openFileInput(fileName);
                     InputStreamReader inputStreamReader = new InputStreamReader(file);
                     BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 
-                    while((values = bufferedReader.readLine()) != null){
-                        tokenizer = new StringTokenizer(values);
-                        line += tokenizer.nextToken();
-                    }
-                    String[] temp = new String[line.length()];
-                    for(int i = 0; i < temp.length; i++){
-                        temp[i] = line.charAt(i) + "";
-                    }
+                    line += bufferedReader.readLine();
+                    String[] temp;// = new String[line.length()];
+                    temp=line.split(" ");
 
+                    Log.d("Debugger","line1: "+line);
+                    int counter=0;
                     for (int i = 0; i<size; i++)
                     {
                         for (int j=0; j<size; j++)
                         {
-                            board[i][j] = Integer.parseInt(temp[i+j]);
+                            board[i][j] = Integer.parseInt(temp[counter]);
+                            Log.d("Debugger","line1: "+board[i][j]);
+                            counter++;
                         }
                     }
+                    Log.d("Debugger","-----");
                     buildBoard(board);
-                    file.close();
 
+                    line="";
+
+                    line += bufferedReader.readLine();
+                    temp=line.split(" ");
+                    counter=0;
+
+                    Log.d("Debugger","line2: "+line);
+                    for (int i = 0; i<size; i++)
+                    {
+                        for (int j=0; j<size; j++)
+                        {
+                            board[i][j] = Integer.parseInt(temp[counter]);
+                            counter++;
+                        }
+                    }
+                    file.close();
                     fillboard(board);
 
                 } catch (Exception e)
