@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.RadioButton;
 
 public class gradlvl extends AppCompatActivity {
 
@@ -33,9 +35,11 @@ public class gradlvl extends AppCompatActivity {
 
     public void grad(View view)
     {
-        if(view.isSelected())
+        RadioButton grad = (RadioButton) view;
+        if(grad.isChecked())
             Controller.tracker.grad = true;
         else
             Controller.tracker.grad = false;
+        Log.d("addo", "grad: "+Controller.tracker.isGrad());
     }
 }

@@ -3,9 +3,10 @@ package com.example.app2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
+import android.view.*;
+import android.os.Bundle;
+import android.widget.*;
 
 public class addOns extends AppCompatActivity {
     private Tracker tracker = MainActivity.tracker;
@@ -33,18 +34,22 @@ public class addOns extends AppCompatActivity {
 
     public void dorm(View view)
     {
-        if(view.isSelected())
+        CheckBox dormatory = (CheckBox) view;
+        if(dormatory.isChecked())
             Controller.tracker.dorm = true;
         else
             Controller.tracker.dorm = false;
+        Log.d("addo", "dorm: "+Controller.tracker.isDorm());
     }
 
 
     public void dining(View view)
     {
-        if(view.isSelected())
+        CheckBox dining = (CheckBox) view;
+        if(dining.isChecked())
             Controller.tracker.dining = true;
         else
             Controller.tracker.dining = false;
+        Log.d("addo", "dining: "+Controller.tracker.isDining());
     }
 }
