@@ -9,11 +9,17 @@ import android.content.*;
 import androidx.annotation.*;
 import com.example.app6.MainActivity.TextChangeHandler;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.Reader;
 
 
 public class Interface extends GridLayout
@@ -179,7 +185,7 @@ public class Interface extends GridLayout
                 Log.d("Debugger","save");
                 try
                 {
-                    FileOutputStream fout = new FileOutputStream(fileName);
+                    OutputStreamWriter fout = new OutputStreamWriter(cont.openFileOutput("File.txt", Context.MODE_PRIVATE));
                     for(int i = 0; i<size; i++)
                     {
                         for(int j =0; j<size; j++)
@@ -192,31 +198,33 @@ public class Interface extends GridLayout
                         line=line+"\n";
                         line2=line2+"\n";
                     }
-                    fout.write(line.getBytes());
-                    fout.write(line2.getBytes());
-
+                    line = line+"*";
+                    line2=line2+"*";
+                    fout.write(line);
+                    fout.write(line2);
+                    fout.flush();
                     fout.close();
                 } catch (IOException e)
                 {
                     File f = new File(fileName);
                     e.printStackTrace();
-                    //TextView disp = findViewById(dispId);
-                    //disp.setText("Error: could not save");
+                    TextView disp = findViewById(dispId);
+                    disp.setText("Error: could not save");
                 }
 
             }
             else if (v.getId() == resumeid)
             {
-                String line="",line2="",input="";
+                String line="",line2="";
+                int input=0;
                 Log.d("Debugger","resume");
                 try
                 {
-                    FileInputStream fin = new FileInputStream(fileName);
-                    InputStreamReader isr = new InputStreamReader(fin);
-                    BufferedReader br = new BufferedReader(isr);
+                    BufferedReader reader = new BufferedReader(new FileReader(fileName));
 
-                    while ((input=br.readLine())!=null)
+                    while ((input=reader.read())!='*') {
                         line=line+input;
+                    }
 
                     String temp[] = line.split(" ");
 
@@ -227,14 +235,14 @@ public class Interface extends GridLayout
                             board[i][j] = Integer.parseInt(temp[i+j]);
                         }
                     }
-                    fin.close();
+                    reader.close();
 
                 } catch (Exception e)
                 {
                     File f = new File(fileName);
                     e.printStackTrace();
-                    //TextView disp = findViewById(dispId);
-                    //disp.setText("Error: could not resume");
+                    TextView disp = findViewById(dispId);
+                    disp.setText("Error: could not resume");
                 }
             }
         }
