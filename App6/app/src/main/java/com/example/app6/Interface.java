@@ -9,9 +9,13 @@ import android.view.*;
 import android.content.*;
 import androidx.annotation.RequiresApi;
 import com.example.app6.MainActivity.TextChangeHandler;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 
 public class Interface extends GridLayout
@@ -19,9 +23,11 @@ public class Interface extends GridLayout
     private int size;
     private static EditText[][] box;
     public static int dispId=0, resetid=0, saveid=0, resumeid=0;
-    public static int[][] board, ogboard;
+    public static int[][] board, ogboard=new int[9][9];
     private onClickListener handler = new onClickListener();
-    private static final String fileName = "boardFile";
+    private static final String fileName = "File.txt";
+    private int w;
+    private Context cont;
 
     @RequiresApi(api = VERSION_CODES.JELLY_BEAN_MR1)
     public Interface(Context context, int size, int width) {
@@ -32,48 +38,19 @@ public class Interface extends GridLayout
         this.size = 9;
         setRowCount(size + 3);
         setColumnCount(size);
+        w = width;
 
         //getting board info from blackbox
         board = Model.makeboard();
-
-        for (int i = 0; i < size; i++)
+        for (int i = 0; i<size; i++)
         {
-            for (int j = 0; j < size; j++)
+            for (int j = 0; j<size; j++)
             {
                 ogboard[i][j] = board[i][j];
             }
         }
-
-
-        //setup and population of board
-        box = new EditText[size][size];
-        for(int i = 0; i<size;i++)
-        {
-            for(int j = 0; j<size; j++)
-            {
-                box[i][j] = new EditText(context);
-                if(board[i][j]==0)
-                    box[i][j].setBackgroundColor(Color.parseColor("#E0E4E3"));
-                else
-                {
-                    box[i][j].setBackgroundColor(Color.parseColor("#AEC4C0"));
-                    box[i][j].setText(board[i][j]+"");
-                    box[i][j].setEnabled(false);
-                }
-                box[i][j].setTextColor(Color.parseColor("#000000"));
-                box[i][j].setTextSize((int)(size*2));
-                box[i][j].setGravity(Gravity.CENTER);
-                LayoutParams params = new LayoutParams();
-                params.width = width;
-                params.height = width;
-                params.rowSpec = GridLayout.spec(i,1);
-                params.columnSpec = GridLayout.spec(j, 1);
-                params.topMargin = params.bottomMargin = 1;
-                params.leftMargin = params.rightMargin = 1;
-                box[i][j].setLayoutParams(params);
-                addView(box[i][j]);
-            }
-        }
+        cont = context;
+        buildBoard(board);
 
         TextView display = new TextView(context);
         display.setId(TextView.generateViewId());
@@ -148,6 +125,40 @@ public class Interface extends GridLayout
 
     }
 
+    public void buildBoard(int[][] board)
+    {
+        //setup and population of board
+        box = new EditText[size][size];
+        for(int i = 0; i<size;i++)
+        {
+            for(int j = 0; j<size; j++)
+            {
+                box[i][j] = new EditText(cont);
+                if(board[i][j]==0) {
+                    box[i][j].setBackgroundColor(Color.parseColor("#E0E4E3"));
+                }
+                else
+                {
+                    box[i][j].setBackgroundColor(Color.parseColor("#AEC4C0"));
+                    box[i][j].setText(board[i][j]+"");
+                    box[i][j].setEnabled(false);
+                }
+                box[i][j].setTextColor(Color.parseColor("#000000"));
+                box[i][j].setTextSize((int)(size*2));
+                box[i][j].setGravity(Gravity.CENTER);
+                LayoutParams params = new LayoutParams();
+                params.width = w;
+                params.height = w;
+                params.rowSpec = GridLayout.spec(i,1);
+                params.columnSpec = GridLayout.spec(j, 1);
+                params.topMargin = params.bottomMargin = 1;
+                params.leftMargin = params.rightMargin = 1;
+                box[i][j].setLayoutParams(params);
+                addView(box[i][j]);
+
+            }
+        }
+    }
 
     public class onClickListener implements OnClickListener
     {
@@ -158,6 +169,8 @@ public class Interface extends GridLayout
             if (v.getId() == resetid)
             {
                 Log.d("Debugger","reset");
+                board=Model.makeboard();
+                buildBoard(board);
 
             }
             else if (v.getId() == saveid)
@@ -167,11 +180,12 @@ public class Interface extends GridLayout
                 Log.d("Debugger","save");
                 try
                 {
-                    FileOutputStream fout = openFileOutput(fileName, Context.MODE_PRIVATE);
+                    FileOutputStream fout = new FileOutputStream(fileName);
                     for(int i = 0; i<size; i++)
                     {
                         for(int j =0; j<size; j++)
                         {
+                            //if(board[i][j]!=null)
                             line = line+board[i][j]+" ";
 
                             line2= line2+ogboard[i][j]+"";
@@ -183,13 +197,44 @@ public class Interface extends GridLayout
                     fout.write(line2.getBytes());
 
                     fout.close();
-                } catch (IOException e) { e.printStackTrace(); }
+                } catch (IOException e)
+                {
+                    e.printStackTrace();
+                    TextView disp = findViewById(dispId);
+                    disp.setText("Error: could not save");
+                }
 
             }
             else if (v.getId() == resumeid)
             {
+                String line="",line2="",input="";
                 Log.d("Debugger","resume");
+                try
+                {
+                    FileInputStream fin = new FileInputStream(fileName);
+                    InputStreamReader isr = new InputStreamReader(fin);
+                    BufferedReader br = new BufferedReader(isr);
 
+                    while ((input=br.readLine())!=null)
+                        line=line+input;
+
+                    String temp[] = line.split(" ");
+
+                    for (int i = 0; i<size; i++)
+                    {
+                        for (int j=0; j<size; j++)
+                        {
+                            board[i][j] = Integer.parseInt(temp[i+j]);
+                        }
+                    }
+                    fin.close();
+
+                } catch (Exception e)
+                {
+                    e.printStackTrace();
+                    TextView disp = findViewById(dispId);
+                    disp.setText("Error: could not resume");
+                }
             }
         }
     }
